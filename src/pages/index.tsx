@@ -1,14 +1,5 @@
 // Home page | Page router
-export default async function Home() {
-  const res = await fetch('http://localhost:3000/api/info');
-  if (!res.ok) throw new Error(`API error: ${res.status}`);
-  const info = await res.json();
-  
-  const updatedTime = new Date().toLocaleString(
-    "en-IN", 
-    { timeZone: "Asia/Kolkata" },
-  );
-
+export default function Home({ info, updatedTime }) {
   return(
     <div className="p-6 h-screen flex flex-col justify-center items-center">
       <div className="p-4 rounded border border-blue-500">
@@ -25,4 +16,18 @@ export default async function Home() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch('http://localhost:3000/api/info');
+  const info = await res.json();
+
+  const updatedTime = new Date().toLocaleString(
+    "en-IN", 
+    { timeZone: "Asia/Kolkata" },
+  );
+
+  return {
+    props: { info , updatedTime},
+  };
 }
