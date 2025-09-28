@@ -10,7 +10,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Blog ({posts}: {posts: any[]})  {
+export default function Blog({posts}: {posts: any[]})  {
   return(
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-4 mt-5">Blog Posts</h1>

@@ -1,5 +1,13 @@
 // Home page | Page router
-export default function Home({ info, updatedTime }) {
+type Props = {
+  info: {
+    name: string;
+    author: string;
+  };
+  updatedTime: string;
+};
+
+export default function Home({ info, updatedTime }: Props) {
   return(
     <div className="p-6 h-screen flex flex-col justify-center items-center">
       <div className="p-4 rounded border border-blue-500">
